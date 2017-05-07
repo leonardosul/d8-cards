@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains d8_cards.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function d8_cards_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the d8_cards module.
+    case 'help.page.d8_cards':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('D8 Cards Exercises') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function d8_cards_theme() {
+  return [
+    'd8_cards' => [
+      'render element' => 'children',
+    ],
+  ];
+}
