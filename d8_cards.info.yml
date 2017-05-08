@@ -5,3 +5,9 @@ core: 8.x
 package: Custom
 dependencies:
   - paragraphs
+  - features
+  - text
+  - link
+  - entity_reference_revisions
+  - node
+  - image
