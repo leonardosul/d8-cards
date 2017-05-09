@@ -9,7 +9,6 @@ namespace Drupal\d8_cards\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Component\Utility\UrlHelper;
 
 /**
  * Class ConfigurationForm.
@@ -75,6 +74,7 @@ class ConfigurationForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Lets save some values.
+    /** @noinspection PhpVoidFunctionResultUsedInspection */
     $this->config('day3.settings')
       ->set('title', $form_state->getValue('title'))
       ->set('develop', $form_state->getValue('develop'))
