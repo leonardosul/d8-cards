@@ -11,3 +11,4 @@ dependencies:
   - entity_reference_revisions
   - node
   - image
+  - migrate_source_csv
