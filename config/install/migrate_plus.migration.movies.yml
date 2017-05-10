@@ -1,0 +1,52 @@
+langcode: en
+status: true
+id: movies
+label: Movies
+migration_group: d8cards
+migration_tags:
+  - CSV
+
+source:
+  plugin: csv
+  path: /var/www/web/modules/custom/d8_cards/data/movies-with-images.csv
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    0:
+      id: Identifier
+    1:
+      title: Title
+    2:
+      plot: Plot
+    3:
+      actors: Actors
+    4:
+      genre: Genre
+    5:
+      image: Image
+
+process:
+  type:
+    plugin: default_value
+    default_value: movie
+  title: title
+  body: plot
+  field_actors: actors
+    plugin: entity_generate
+    source: actors
+  field_genre:
+    plugin: entity_generate
+    source: genre
+  field_movie_image: image
+    plugin: file_import
+    source: image
+
+
+destination:
+  plugin: entity:node
+
+dependencies:
+  enforced:
+    module:
+      - d8_cards

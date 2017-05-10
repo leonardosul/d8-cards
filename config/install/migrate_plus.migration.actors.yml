@@ -1,0 +1,33 @@
+langcode: en
+status: true
+id: actors
+label: Import actors
+migration_tags:
+ - CSV
+migration_group: d8cards
+
+source:
+  plugin: csv
+  path: /var/www/web/modules/custom/d8_cards/data/actors.csv
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    0:
+      id: ID
+    1:
+      name: Name
+
+process:
+  title: name
+  type:
+    plugin: default_value
+    default_value: actors
+
+destination:
+  plugin: entity:node
+
+dependencies:
+  enforced:
+    module:
+      - d8_cards
