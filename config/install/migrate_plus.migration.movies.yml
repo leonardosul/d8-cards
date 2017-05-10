@@ -42,8 +42,13 @@ process:
       migration: actors
 
   field_genre:
-    plugin: entity_generate
-    source: genre
+      -
+        plugin: explode
+        source: genre
+        delimiter: ' | '
+      -
+        plugin: entity_generate
+
   field_movie_image:
     plugin: file_import
     source: image
