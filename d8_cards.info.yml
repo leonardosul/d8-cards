@@ -2,7 +2,8 @@ name: d8_cards
 type: module
 description: D8 Cards Exercises
 core: 8.x
-package: Custom
+package: D8 Cards
+project: d8_cards
 dependencies:
   - paragraphs
   - features
@@ -11,7 +12,3 @@ dependencies:
   - entity_reference_revisions
   - node
   - image
-  - migrate
-  - migrate_source_csv
-  - migrate_tools
-  - migrate_plus

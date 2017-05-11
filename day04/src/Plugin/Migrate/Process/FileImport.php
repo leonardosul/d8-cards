@@ -1,9 +1,9 @@
 <?php
 /**
  * @file
- * Contain \Drupal\comics_migration\migrate\process
+ * Contain \Drupal\day04\Plugin\Migrate\Process\FileImport
  */
-namespace Drupal\d8_cards\Plugin\migrate\process;
+namespace Drupal\day04\Plugin\Migrate\Process;
 
 use Drupal\migrate\MigrateExecutableInterface;
 use Drupal\migrate\ProcessPluginBase;

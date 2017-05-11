@@ -1,7 +1,7 @@
 d8-cards-day-03:
  path: '/d8-cards/day3/config'
  defaults:
-   _form: '\Drupal\d8_cards\Form\ConfigurationForm'
+   _form: '\Drupal\day03\Form\ConfigurationForm'
    _title: 'Configuration form'
  requirements:
    _permission: 'administer content'

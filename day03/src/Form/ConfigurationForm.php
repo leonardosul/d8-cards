@@ -2,10 +2,10 @@
 
 /**
  * @file
- * Contains \Drupal\d8_cards\Form\ConfigurationForm.
+ * Contains \Drupal\day03\Form\ConfigurationForm.
  */
 
-namespace Drupal\d8_cards\Form;
+namespace Drupal\day03\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;

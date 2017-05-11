@@ -8,7 +8,7 @@ migration_tags:
 
 source:
   plugin: csv
-  path: /var/www/web/modules/custom/d8_cards/data/movies-with-images.csv
+  path: /var/www/web/modules/custom/d8_cards/day04/data/movies-with-images.csv
   header_row_count: 1
   keys:
     - id

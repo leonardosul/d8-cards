@@ -8,7 +8,7 @@ migration_group: d8cards
 
 source:
   plugin: csv
-  path: /var/www/web/modules/custom/d8_cards/data/actors.csv
+  path: /var/www/web/modules/custom/d8_cards/day04/data/actors.csv
   header_row_count: 1
   keys:
     - id
