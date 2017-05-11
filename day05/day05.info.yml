@@ -1,0 +1,7 @@
+name: Day 05
+type: module
+description: My Awesome Module
+core: 8.x
+package: D8 Cards
+dependencies:
+  - d8_cards
