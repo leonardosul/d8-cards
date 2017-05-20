@@ -3,7 +3,7 @@ type: module
 description: D8 Cards Day 02
 core: 8.x
 package: D8 Cards
-project: d8_cards
+project: day02
 dependencies:
   - d8_cards
   - menu_ui

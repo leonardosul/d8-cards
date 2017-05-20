@@ -3,7 +3,7 @@ type: module
 description: D8 Cards Day 04
 core: 8.x
 package: D8 Cards
-project: d8_cards
+project: day04
 dependencies:
   - d8_cards
   - migrate
