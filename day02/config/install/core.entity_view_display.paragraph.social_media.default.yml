@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media.field_embed_code
+    - field.field.paragraph.social_media.field_link
+    - paragraphs.paragraphs_type.social_media
+  module:
+    - link
+    - text
+id: paragraph.social_media.default
+targetEntityType: paragraph
+bundle: social_media
+mode: default
+content:
+  field_embed_code:
+    type: text_default
+    weight: 0
+    region: content
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+hidden: {  }

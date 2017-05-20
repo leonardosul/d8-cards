@@ -5,10 +5,11 @@ core: 8.x
 package: D8 Cards
 project: d8_cards
 dependencies:
-  - paragraphs
   - features
+  - features_ui
   - text
   - link
   - entity_reference_revisions
   - node
   - image
+  - default_content

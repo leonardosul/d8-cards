@@ -6,3 +6,7 @@ package: D8 Cards
 project: d8_cards
 dependencies:
   - d8_cards
+  - menu_ui
+  - path
+  - paragraphs
+  - user

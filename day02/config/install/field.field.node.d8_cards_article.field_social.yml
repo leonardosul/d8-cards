@@ -3,18 +3,18 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_social
-    - node.type.article
+    - node.type.d8_cards_article
     - paragraphs.paragraphs_type.social_media
   module:
     - entity_reference_revisions
-id: node.article.field_social
+id: node.d8_cards_article.field_social
 field_name: field_social
 entity_type: node
-bundle: article
+bundle: d8_cards_article
 label: Social
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
