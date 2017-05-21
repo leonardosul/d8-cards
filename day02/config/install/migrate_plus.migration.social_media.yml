@@ -10,6 +10,7 @@ source:
   plugin: csv
   path: /var/www/web/modules/custom/d8_cards/day02/data/social_media.csv
   delimiter: '|'
+  enclosure: "'"
   header_row_count: 1
   keys:
     - id
