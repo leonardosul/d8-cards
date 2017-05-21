@@ -1,6 +1,6 @@
 # D8 Cards
 
-This is my attempt to complete the Exercise Cards listed on [Drupal 8 Activity Cards] (https://www.d8cards.com/). I have skipped Day 01 as the solution for that one contained no custom code.
+This is my attempt to complete the Exercise Cards listed on [Drupal 8 Activity Cards](https://www.d8cards.com/). I have skipped Day 01 as the solution for that one contained no custom code.
  
 The solutions are split into submodules named after each step:
 
