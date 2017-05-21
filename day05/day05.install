@@ -1,0 +1,54 @@
+<?php
+
+use Drupal\block\Entity\Block;
+use Drupal\block_content\Entity\BlockContent;
+use Symfony\Component\Yaml\Yaml;
+
+
+/**
+ * Implements hook_install().
+ */
+function day05_install() {
+
+  // Lets grab some data.
+  $block_data = Yaml::parse(DRUPAL_ROOT . '/modules/custom/d8_cards/day05/data/blocks.yml');
+
+  foreach ($block_data['blocks'] as $block) {
+
+    // New block id.
+    $new_block_id = 'stock_exchange_rate_card_' . strtolower($block['company_name']);
+
+    // Check to see if block already exists.
+    if (empty(Block::load($new_block_id))) {
+
+      // Add block of type stock_exchange_rate_card
+      $block_content = BlockContent::create([
+        'type' => 'stock_exchange_rate_card',
+        'info' => $block['company_name'],
+      ]);
+      $block_content->set('field_company_name', $block['company_name']);
+      $block_content->set('field_symbol', $block['symbol']);
+      $block_content->save();
+
+      $block = Block::create([
+        'id' => $new_block_id,
+        'plugin' => 'block_content:' . $block_content->uuid(),
+        'region' => 'content',
+        'provider' => 'block_content',
+        'weight' => -100,
+        'theme' => \Drupal::config('system.theme')->get('default'),
+        'visibility' => array(
+          'request_path' => array(
+            'id' => 'request_path',
+            'pages' => '<front>'
+          )
+        ),
+        'settings' => [
+          'label' => $block['company_name'] . ' Block',
+          'label_display' => 'visible',
+        ],
+      ]);
+      $block->save();
+    }
+  }
+}

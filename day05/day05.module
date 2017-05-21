@@ -5,4 +5,12 @@
  * Contains day05.module.
  */
 
+/**
+ * Implements hook_cron().
+ */
+function day05_cron() {
 
+  // On cron run, cycle through all blocks.
+
+
+}

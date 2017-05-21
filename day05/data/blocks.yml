@@ -1,0 +1,13 @@
+blocks:
+  0:
+    company_name: "Apple"
+    symbol: APPL
+  1:
+    company_name: "Bank of America"
+    symbol: BAC
+  2:
+    company_name: "Transocean"
+    symbol: RIG
+  3:
+    company_name: "Freeport"
+    symbol: FCX

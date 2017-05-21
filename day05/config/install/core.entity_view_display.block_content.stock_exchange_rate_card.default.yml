@@ -1,0 +1,49 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.stock_exchange_rate_card
+    - field.field.block_content.stock_exchange_rate_card.body
+    - field.field.block_content.stock_exchange_rate_card.field_change
+    - field.field.block_content.stock_exchange_rate_card.field_company_name
+    - field.field.block_content.stock_exchange_rate_card.field_last_price
+    - field.field.block_content.stock_exchange_rate_card.field_symbol
+id: block_content.stock_exchange_rate_card.default
+targetEntityType: block_content
+bundle: stock_exchange_rate_card
+mode: default
+content:
+  field_change:
+    type: string
+    weight: 3
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_company_name:
+    type: string
+    weight: 0
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_last_price:
+    type: string
+    weight: 2
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  field_symbol:
+    type: string
+    weight: 1
+    region: content
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+hidden:
+  body: true

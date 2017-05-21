@@ -6,3 +6,7 @@ package: D8 Cards
 project: day05
 dependencies:
   - d8_cards
+  - migrate
+  - migrate_source_csv
+  - migrate_tools
+  - migrate_plus
