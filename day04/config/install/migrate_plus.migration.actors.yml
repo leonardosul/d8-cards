@@ -4,7 +4,7 @@ id: actors
 label: Import actors
 migration_tags:
  - CSV
-migration_group: d8cards
+migration_group: day04
 
 source:
   plugin: csv

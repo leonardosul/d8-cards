@@ -2,7 +2,7 @@ langcode: en
 status: true
 id: movies
 label: Movies
-migration_group: d8cards
+migration_group: day04
 migration_tags:
   - CSV
 
