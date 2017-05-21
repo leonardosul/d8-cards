@@ -10,3 +10,7 @@ dependencies:
   - path
   - paragraphs
   - user
+  - migrate
+  - migrate_source_csv
+  - migrate_tools
+  - migrate_plus

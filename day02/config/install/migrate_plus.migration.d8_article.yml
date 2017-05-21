@@ -1,0 +1,53 @@
+langcode: en
+status: true
+id: d8_cards_article
+label: Import D8 Cards Articles
+migration_tags:
+ - CSV
+migration_group: day02
+
+source:
+  plugin: csv
+  path: /var/www/web/modules/custom/d8_cards/day02/data/d8_cards_articles.csv
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    0:
+      id: ID
+    1:
+      title: Title
+    2:
+      social_id: Social Paragraph ID
+
+process:
+  title: title
+  field_social/target_id:
+    -
+      plugin: migration
+      migration: social_media
+      no_stub: true
+      source: id
+    -
+      plugin: extract
+      index:
+        - '0'
+  field_social/target_revision_id:
+    -
+      plugin: migration
+      migration: social_media
+      no_stub: true
+      source: id
+    -
+      plugin: extract
+      index:
+        - 1
+
+destination:
+  plugin: entity:node
+  default_bundle: d8_cards_article
+
+dependencies:
+  enforced:
+    module:
+      - day02

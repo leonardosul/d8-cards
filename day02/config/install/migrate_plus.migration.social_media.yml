@@ -1,0 +1,38 @@
+langcode: en
+status: true
+id: social_media
+label: Import Social Media Paragraphs
+migration_tags:
+ - CSV
+migration_group: day02
+
+source:
+  plugin: csv
+  path: /var/www/web/modules/custom/d8_cards/day02/data/social_media.csv
+  delimiter: '|'
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    0:
+      id: Identifier
+    1:
+      embed_code: Embed Code
+    2:
+      link_title: Link Title
+    3:
+      link_uri: Link URI
+
+process:
+  field_embed_code: embed_code
+  field_link/title: link_title
+  field_link/uri: link_uri
+
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: social_media
+
+dependencies:
+  enforced:
+    module:
+      - day02

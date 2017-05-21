@@ -30,4 +30,4 @@ destination:
 dependencies:
   enforced:
     module:
-      - d8_cards
+      - day04

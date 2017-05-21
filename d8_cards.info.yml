@@ -12,4 +12,3 @@ dependencies:
   - entity_reference_revisions
   - node
   - image
-  - default_content
