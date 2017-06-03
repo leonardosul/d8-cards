@@ -1,0 +1,8 @@
+name: Day 07
+type: module
+description: D8 Cards Day 06
+core: 8.x
+package: D8 Cards
+project: day07
+dependencies:
+  - d8_cards
