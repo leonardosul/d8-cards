@@ -1,0 +1,84 @@
+# Services required for D8 Cards Development - Nginx, PHP-FPM, MySQL, Mailhog, Portainer
+version: '2'
+
+services:
+
+# Nginx container.
+  d8cards-nginx:
+    container_name: d8cards-nginx
+    image: nginx:latest
+    ports:
+      - 80:80
+    links:
+      - d8cards-php
+    volumes:
+      - .:/var/www:rw,delegated
+      - ./conf/nginx/default.vhost.conf:/etc/nginx/conf.d/default.conf
+
+# PHP-FPM container.
+  d8cards-php:
+    container_name: d8cards-php
+    image: supermassive/drupal-docker-php-fpm
+    ports:
+      - 9001:9001
+      - 9000:9000
+    links:
+      - d8cards-mysql
+      - d8cards-mailhog
+    environment:
+     - XDEBUG_CONFIG=${XDEBUG_CONFIG}
+     - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
+    volumes:
+      - .:/var/www:rw,delegated
+    volumes_from:
+      - d8cards-mysql
+
+# MySQL container.
+  d8cards-mysql:
+    container_name: d8cards-mysql
+    image: mysql:5.7
+    ports:
+      - 3306:3306
+    environment:
+     - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+     - MYSQL_DATABASE=${MYSQL_DATABASE}
+     - MYSQL_USER=${MYSQL_USER}
+     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - /usr/bin
+
+# Phpmyadmin container.
+  d8cards-phpmyadmin:
+    container_name: d8cards-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8080:80
+    links:
+      - d8cards-mysql
+    environment:
+      - PMA_HOST=${PMA_HOST}
+      - PMA_PORT=${PMA_PORT}
+
+# Mailhog Container
+  d8cards-mailhog:
+    image: mailhog/mailhog
+    container_name: d8cards-mailhog
+    working_dir: /home/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+
+# Portainer Container
+  d8cards-portainer:
+    container_name: d8cards-portainer
+    image: portainer/portainer
+    ports:
+      - 9002:9000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - d8cards-portainer:/data
+
+# Volumes
+volumes:
+  d8cards-portainer:

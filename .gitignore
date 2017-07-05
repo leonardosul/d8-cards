@@ -1,0 +1,11 @@
+# Composer generated stuff
+vendor
+web
+!web/modules/custom
+bin
+
+# Portainer data
+portainer-data
+
+# MySQL data
+mysql-data

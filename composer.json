@@ -1,17 +1,74 @@
 {
-  "name": "drupal/d8_cards",
-  "type": "drupal-module",
-  "description": "D8 Cards Exercises",
-  "keywords": ["Drupal"],
+  "name": "d8-cards/drupal-project",
+  "description": "Drupal site for D8 Cards modules.",
+  "type": "project",
   "license": "GPL-2.0+",
-  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Leonard O' Sullivan",
+      "role": ""
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    }
+  ],
   "require": {
-    "drupal/features:": "~3.5.0",
+    "composer/installers": "^1.2",
+    "drupal-composer/drupal-scaffold": "^2.2",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core": "~8.0",
+    "drush/drush": "~8.0",
+    "drupal/console": "~1.0",
+    "drupal/address": "^1.0@RC",
+    "drupal/features": "~3.0",
+    "drupal/paragraphs": "~1.0",
+    "drupal/admin_toolbar": "~1.0",
+    "drupal/adminimal_admin_toolbar": "~1.0",
+    "drupal/adminimal_theme": "~1.0",
+    "drupal/migrate_source_csv": "^2.0",
+    "drupal/migrate_plus": "^2.0",
+    "drupal/migrate_tools": "^2.0",
+    "drupal/default_content": "1.0.0-alpha6",
     "drupal/entity_reference_revisions": "1.x-dev",
-    "drupal/migrate_plus": "4.0.0-beta1",
-    "drupal/migrate_tools": "4.0.0-beta1",
-    "drupal/migrate_source_csv": "~2.0.0",
-    "drupal/paragraphs": "~1.1.0",
-    "drupal/features": "~3.5.0"
+    "drupal/webform": "5.x-dev",
+    "drupal/devel": "1.x-dev",
+    "drupal/smtp": "1.x-dev",
+    "drupal/pathauto": "^1.0",
+    "drupal/bootstrap": "^3.5"
+  },
+  "require-dev": {
+  },
+  "config": {
+    "bin-dir": "bin/"
+  },
+  "conflict": {
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "DrupalDockerDev\\Scripts\\": "scripts/"
+    }
+  },
+  "scripts": {
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "post-install-cmd": [
+      "@drupal-scaffold"
+    ],
+    "post-update-cmd": [
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/libraries/{$name}": ["type:drupal-library"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/contrib/{$name}": ["type:drupal-drush"]
+    }
   }
 }
