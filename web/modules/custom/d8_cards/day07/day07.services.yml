@@ -1,0 +1,10 @@
+# Parameters
+parameters:
+  d8_cards.day07.event_subscriber.user_register_subscriber.class: Drupal\d8_cards\day07\EventSubscriber\UserRegisterSubscriber
+
+services:
+  d8_cards.day07.event_subscriber.user_register_subscriber:
+    class: '%d8_cards.day07.event_subscriber.user_register_subscriber.class%'
+    arguments: []
+    tags:
+      - { name: 'event_subscriber' }
