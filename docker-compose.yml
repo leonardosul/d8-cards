@@ -20,8 +20,9 @@ services:
     container_name: d8cards-php
     image: supermassive/drupal-docker-php-fpm
     ports:
-      - 9001:9001
       - 9000:9000
+    expose:
+      - 9001
     links:
       - d8cards-mysql
       - d8cards-mailhog

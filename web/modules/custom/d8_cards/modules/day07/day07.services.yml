@@ -1,9 +1,8 @@
 # Parameters
 parameters:
-  d8_cards.day07.event_subscriber.user_register_subscriber.class: Drupal\day07\EventSubscriber\UserRegisterSubscriber
+  d8_cards.day07.user_insert.class: Drupal\day07\User\UserInsert
 
 services:
-  d8_cards.day07.event_subscriber.user_register_subscriber:
-    class: '%d8_cards.day07.event_subscriber.user_register_subscriber.class%'
-    tags:
-      - { name: 'event_subscriber' }
+  d8_cards.day07.user_insert:
+    class: '%d8_cards.day07.user_insert.class%'
+    arguments: ['@current_user']
