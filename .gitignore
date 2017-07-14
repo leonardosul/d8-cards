@@ -1,6 +1,6 @@
 # Composer generated stuff
 vendor
-web
+/web/
 bin
 
 # Portainer data
@@ -8,4 +8,8 @@ portainer-data
 
 # MySQL data
 mysql-data
+
+# Un-ignore module
+!/web/modules/custom/d8_cards
 !/web/modules/custom/d8_cards/
+!/web/modules/custom/d8_cards/**
