@@ -47,6 +47,7 @@ services:
     volumes:
       - ./mysql-data:/var/lib/mysql
       - /usr/bin
+    user: "1000"
 
 # Phpmyadmin container.
   d8cards-phpmyadmin:
