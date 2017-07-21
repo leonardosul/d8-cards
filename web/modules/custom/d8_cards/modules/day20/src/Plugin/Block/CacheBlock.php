@@ -3,9 +3,7 @@
 namespace Drupal\day20\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
-use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Cache\DatabaseBackend;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Provides a 'CacheBlock' block.
@@ -15,65 +13,49 @@ use Drupal\Core\Cache\DatabaseBackend;
  *  admin_label = @Translation("Cache block"),
  * )
  */
-class CacheBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class CacheBlock extends BlockBase {
 
-  /**
-   * Drupal\Core\Cache\DatabaseBackend definition.
-   *
-   * @var \Drupal\Core\Cache\DatabaseBackend
-   */
-  protected $cacheDefault;
-  /**
-   * Drupal\Core\Cache\DatabaseBackend definition.
-   *
-   * @var \Drupal\Core\Cache\DatabaseBackend
-   */
-  protected $cacheRender;
-  /**
-   * Constructs a new CacheBlock object.
-   *
-   * @param array $configuration
-   *   A configuration array containing information about the plugin instance.
-   * @param string $plugin_id
-   *   The plugin_id for the plugin instance.
-   * @param string $plugin_definition
-   *   The plugin implementation definition.
-   */
-  public function __construct(
-        array $configuration,
-        $plugin_id,
-        $plugin_definition,
-        DatabaseBackend $cache_default, 
-	DatabaseBackend $cache_render
-  ) {
-    parent::__construct($configuration, $plugin_id, $plugin_definition);
-    $this->cacheDefault = $cache_default;
-    $this->cacheRender = $cache_render;
-  }
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
-    return new static(
-      $configuration,
-      $plugin_id,
-      $plugin_definition,
-      $container->get('cache.default'),
-      $container->get('cache.render')
-    );
-  }
   /**
    * {@inheritdoc}
    */
   public function build() {
 
-    // Lets grab some nodes.
-    $query = \Drupal::entityQuery('node');
-    $query->sort('created','DESC');
-    $nids = $query->execute();
+    // Set up some variables.
+    $title_string = '';
+    $cache_tags = [];
+    $tags = [];
+    $title_string_cache = \Drupal::cache()->get('title_string_cache');
 
-    $build = [];
-    $build['cache_block']['#markup'] = 'Implement CacheBlock.';
+    // If no cache lets query and populate.
+    if (!$title_string_cache || !$title_string_cache->data) {
+      $nodes = node_get_recent(5);
+      
+      foreach ($nodes as $node) {
+        $title_string = $title_string . '-[' . $node->getTitle() . ']';
+        $cache_tags[] = $node->getCacheTags();
+      }
+
+      // Clean up cache tag array.
+      foreach ($cache_tags as $cache_tag) {
+        $tags[] = $cache_tag[0];
+      }
+
+      // Set cache, and include cache tags from the nodes we just loaded.
+      $title_string_cache = \Drupal::cache()->set('title_string_cache', $title_string, Cache::PERMANENT, $tags);
+
+    }
+    else {
+      $title_string = \Drupal::cache()->get('title_string_cache')->data;
+      $tags = \Drupal::cache()->get('title_string_cache')->tags;
+    }
+
+    $build['cache_block'] = [
+      '#markup' => $title_string,
+      '#cache' => [
+        'keys' => ['title-string-cache'],
+        'tags' => $tags,
+      ],
+    ];
 
     return $build;
   }
