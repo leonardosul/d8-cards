@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * Contains day07.module.
+ */
+
+use \Drupal\Core\Session\AccountInterface;
+
+function day07_user_insert(AccountInterface $user) {
+  $stuff = $user;
+  // Alter login form and add own custom submit handler.
+  return \Drupal::service('d8_cards.day07.user_insert')
+    ->userCreate($user);
+}
